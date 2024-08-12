@@ -18,7 +18,7 @@ class Job:
     state: jobState
     
     def __init__(self, jobtype: str, jobFile: str) -> None:
-        self.jobtype = jobtype
+        self.jobType = jobtype
         self.jobFile = jobFile
         self.state = jobState.created
     
@@ -33,6 +33,12 @@ class Job:
     
     def getState(self) -> jobState:
         return self.state
+    
+    def getType(self) -> str:
+        return self.jobType
+    
+    def getFile(self) -> str:
+        return self.jobFile
     
 
 class Worker:
@@ -162,4 +168,17 @@ print("Queued jobs: ", len(queuedJobs))
 print("Running jobs: ", len(runningJobs))
 print("Completed jobs: ", len(completedJobs))
 
-# print(queuedJobs.)
+def printJobs(titlestring: str, jobs: List[Job]):
+    print(titlestring, ": [")
+    for job in jobs:
+        print("{")
+        print("type : ", job.getType())
+        print("file : ", job.getFile())
+        print("state : ", job.getState())
+        print("},")
+    print("] \n\n")
+       
+printJobs("Created jobs", createdJobs)
+printJobs("Queued jobs", queuedJobs)
+printJobs("Running jobs", runningJobs)
+printJobs("Completed jobs", completedJobs)
