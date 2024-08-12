@@ -1,4 +1,5 @@
 enum jobState {
+    created = "created",
     queued = "queued",
     running = "running",
     completed = "completed"
@@ -16,7 +17,7 @@ class Job{
     constructor(type: string, file: string){
         this.type = type;
         this.file = file;
-        this.state = jobState.queued;
+        this.state = jobState.created;
     }
 
     setQueued(){
@@ -86,6 +87,7 @@ class JobScheduler{
     }
 
     addJob(job: Job){
+        job.setQueued();
         this.jobs.push(job);
     }
 

@@ -1,6 +1,7 @@
 "use strict";
 var jobState;
 (function (jobState) {
+    jobState["created"] = "created";
     jobState["queued"] = "queued";
     jobState["running"] = "running";
     jobState["completed"] = "completed";
@@ -12,15 +13,11 @@ var workerState;
     workerState["busy"] = "busy";
 })(workerState || (workerState = {}));
 ;
-// enum jobType {
-//     data_processing = "data_processing",
-//     report_generation = "report_generation"
-// }
 class Job {
     constructor(type, file) {
         this.type = type;
         this.file = file;
-        this.state = jobState.queued;
+        this.state = jobState.created;
     }
     setQueued() {
         this.state = jobState.queued;
@@ -74,6 +71,7 @@ class JobScheduler {
         return idleWorkers;
     }
     addJob(job) {
+        job.setQueued();
         this.jobs.push(job);
     }
     addWorker(worker) {
@@ -122,8 +120,9 @@ class JobScheduler {
     }
 }
 // TESTING -------------------------------------------------------------------------------------
-// const job1 = new Job({ type: "data_processing", file: "data.txt" });
-// const job2 = new Job({ type: "report_generation", format: "pdf" });
+// const job1 = new Job({ type: "data_processing_1", file: "data.txt" });
+// const job2 = new Job({ type: "report_generation_2", format: "pdf" });
+// const job3 = new Job({ type: "data_processing_3", file: "data.txt" });
 // TODO DELETE
 const job1 = new Job("data_processing_1", "data.txt");
 const job2 = new Job("report_generation_2", "pdf");
@@ -136,8 +135,6 @@ jobScheduler.addJob(job2);
 jobScheduler.addJob(job3);
 jobScheduler.addWorker(worker1);
 jobScheduler.addWorker(worker2);
-// delete
-// job2.setCompleted();
 jobScheduler.assignJobs();
 worker1.completeJob();
 jobScheduler.assignJobs();
