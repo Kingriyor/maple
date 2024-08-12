@@ -1,0 +1,15 @@
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2016",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true 
+  },
+  "include": ["scheduler.ts"],
+  "exclude": ["node_modules"]
+}
