@@ -131,9 +131,33 @@ class JobScheduler:
         
 # # TESTING
 
-# job1 = new Job({ type: "data_processing_1", file: "data.txt" })
-# job2 = new Job({ type: "report_generation_2", format: "pdf" })
-# job3 = new Job({ type: "data_processing_3", file: "data.txt" })
+
+# ----------------------------------------------------
+
+class Job2:
+    type: str
+    file: str
+    def __init__(self, details: object) -> None:
+        self.file = details['file']
+        self.type = details['type']
+    
+    def getDetails(self) -> str:
+        return self.type + " - " + self.file
+
+
+jobT = Job2({ "type": "data_processing_1", "file": "data.txt" })
+print("\n")
+print(jobT.getDetails())
+print("\n-------------------------------------------- \n\n")
+        
+
+# job1 = Job({ type: "data_processing_1", file: "data.txt" })
+# job2 = Job({ type: "report_generation_2", format: "pdf" })
+# job3 = Job({ type: "data_processing_3", file: "data.txt" })
+
+
+# ----------------------------------------------------
+        
 
 # TODO DELETE
 job1 = Job("data_processing_1", "data.txt")
@@ -158,6 +182,9 @@ worker1.completeJob()
 
 jobScheduler.assignJobs()
 
+
+# ----------------------------------------------------
+
 createdJobs = jobScheduler.getCreatedJobs()
 queuedJobs = jobScheduler.getQueuedJobs()
 runningJobs = jobScheduler.getRunningJobs()
@@ -167,6 +194,9 @@ print("Created jobs: ", len(createdJobs))
 print("Queued jobs: ", len(queuedJobs))
 print("Running jobs: ", len(runningJobs))
 print("Completed jobs: ", len(completedJobs))
+
+
+# ----------------------------------------------------
 
 def printJobs(titlestring: str, jobs: List[Job]):
     print(titlestring, ": [")
