@@ -188,3 +188,10 @@ console.log("Queued jobs:", queuedJobs);
 console.log("Running jobs:", runningJobs);
 console.log("Completed jobs:", completedJobs);
 
+
+
+// Questions:
+// 1) Structure and composition of the teams (how they are divided eg number of frontend engineers, backend engineers, DevOps engineers, product managers, etc per “team”)
+// 2) technologies and stack used
+// 3) primary working hours (specify timezone)
+// 4) reporting structure of the engineering department as a whole
