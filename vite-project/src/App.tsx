@@ -1,12 +1,14 @@
 import Message from "./components/Message";
-// import ListGroup from "./components/ListGroup";
-import TimeC from "./components/TimeC";
+import ListGroup from "./components/ListGroup";
+// import TimeC from "./components/TimeC";
 import { useState } from "react";
 import Alert from "./components/Alert";
 import MyButton from "./components/MyButton";
 // import { Fragment } from "react/jsx-runtime"; // or use <></>
 import MyCall from "./components/MyCall";
 import MyTime from "./components/MyTime";
+import Car from "./components/Car";
+import Car2 from "./components/Car2";
 
 function App() {
   const BaseUrl = "https://jsonplaceholder.typicode.com";
@@ -22,14 +24,16 @@ function App() {
 
   return (
     <>
+      {/* <Car2 brand="Ford" model="Mustang" color="red" year={1994}></Car2> */}
       {/* <MyTime /> */}
       <MyCall />
+      <Car />
       {/* <Message /> */}
       {/* <TimeC /> */}
       {/* <ListGroup
         items={cities}
         title="Cities"
-        onSelectedItem={handleSelectItem}
+        onSelectedItem={() => handleSelectItem("Riyo")}
       /> */}
 
       {/* {<Alert text="Ariyo" />} */}

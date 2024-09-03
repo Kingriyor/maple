@@ -34,10 +34,14 @@ function MyTime() {
     const minsADay = 24 * 60;
     const hourToMins = hour * 60;
     const currentMinCount = minute + hourToMins;
-    const currentProgress = ((currentMinCount / minsADay) * 100).toFixed(2);
+    const currentProgress = parseFloat(
+      ((currentMinCount / minsADay) * 100).toFixed(2)
+    );
+    setProgress(currentProgress);
     setProgress(currentProgress);
   };
 
+  // This runs at every render and also re-render of this component due to state change
   useEffect(() => {
     updateCalc();
   });

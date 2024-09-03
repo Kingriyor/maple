@@ -29,3 +29,22 @@ if (authenticated) {
 
 // Using ternary operator
 authenticated ? renderApp() : renderLogin();
+
+// useState renders everytime a change is detected
+
+// useEffect runs at every render.
+// BUT runs once on first render of the component when the "[]" is passed at the end
+
+/* 
+You can also specify a state to watch for changes in before useEffect re-renders. Eg below
+
+const [name, setName] = useState("Ariyo");
+
+useEffect(() => {
+  console.log("re-render");
+},[name]);
+
+The above effect renders at the beginning and only when name state changes
+
+
+*/
